@@ -18,24 +18,18 @@ export const Title = styled.div`
   border-radius: 6px 6px 0 0;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.08);
   position: relative;
-  font-size: 2.2em;
+  font-size: 1.8em;
   font-weight: 400;
 `
 
 export const Subtitle = styled.div`
   padding: 9px 0;
-  font-size: 1.2em;
+  font-size: 1em;
   border-radius: 0 0 10px 10px;
 
   color: #fefefe;
   background: #34495e;
   font-weight: 300;
-`
-
-const Small = styled.span`
-  color: #354a5e;
-  font-size: 0.6em;
-  margin-left: 0.4em;
 `
 
 export function AgendaCard() {
