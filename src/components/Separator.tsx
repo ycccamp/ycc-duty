@@ -43,7 +43,7 @@ export function Separator(props: SeparatorProps) {
     <Container className="separator-container">
       <Label fontSize={props.fontSize}>{props.label || props.children}</Label>
 
-      <Line lineWidth={props.short ? '55%' : '100%'} />
+      <Line lineWidth={props.short ? '180px' : '100%'} />
     </Container>
   )
 }
