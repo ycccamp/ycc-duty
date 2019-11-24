@@ -1,10 +1,10 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import Swipeout from 'rc-swipeout'
 import Ink from 'react-ink'
-import {CSSTransition} from 'react-transition-group'
 
-function buildAction(onLeftPress, onRightPress) {
+import Swipeout from './Swipeout'
+
+function buildAction(onLeftPress: Function, onRightPress: Function) {
   const actionLeft = [
     {
       text: (
@@ -54,8 +54,8 @@ const Container = styled.div<ContainerProps>`
 
   opacity: ${props => (props.upcoming ? 0.88 : 1)};
 
-  .rc-swipeout,
-  .rc-swipeout-btn.duty-card-action {
+  .swipeout,
+  .swipeout-btn.duty-card-action {
     background: ${props => props.color || '#9b59b6'};
   }
 `

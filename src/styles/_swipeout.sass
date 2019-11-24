@@ -1,16 +1,16 @@
-.rc-swipeout
+.swipeout
   overflow: hidden
   position: relative
 
-  .rc-swipeout-content,
-  .rc-swipeout-actions
+  .swipeout-content,
+  .swipeout-actions
     transition: all 250ms
 
-.rc-swipeout-content
+.swipeout-content
   position: relative
   width: 100%
 
-.rc-swipeout-cover
+.swipeout-cover
   position: absolute
   z-index: 2
   background: transparent
@@ -19,10 +19,10 @@
   top: 0
   display: none
 
-.rc-swipeout-swiping .rc-swipeout-content
+.swipeout-swiping .swipeout-content
   transition: none
 
-.rc-swipeout-actions 
+.swipeout-actions 
   position: absolute
   top: 0
   bottom: 0
@@ -31,13 +31,13 @@
   overflow: hidden
   white-space: nowrap
 
-.rc-swipeout-actions-left 
+.swipeout-actions-left 
   left: 0
 
-.rc-swipeout-actions-right 
+.swipeout-actions-right 
   right: 0
 
-.rc-swipeout-btn 
+.swipeout-btn 
   display: flex
   align-items: center
   justify-content: center
@@ -47,22 +47,22 @@
 .duty-card-container
   user-select: none
 
-  .rc-swipeout
+  .swipeout
     border-radius: 0px 6px 6px 0px
 
-  .rc-swipeout-btn-text
+  .swipeout-btn-text
     padding: 0
     height: 100%
     min-width: 55px
 
-  .rc-swipeout-btn.duty-card-action
+  .swipeout-btn.duty-card-action
     color: white
     font-size: 0.85em
 
-    .rc-swipeout-actions-left &
+    .swipeout-actions-left &
       border-radius: 6px 0px 0px 6px
 
-    .rc-swipeout-actions-right &
+    .swipeout-actions-right &
       border-radius: 0px 6px 6px 0px
 
   .duty-card-action-container
