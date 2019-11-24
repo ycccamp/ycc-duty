@@ -1,6 +1,10 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
+import TouchEmulator from 'hammer-touchemulator'
+
+TouchEmulator()
+
 import {Routes} from './components/Routes'
 
 function App() {

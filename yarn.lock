@@ -3644,6 +3644,11 @@ gud@^1.0.0:
   resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
   integrity sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw==
 
+hammer-touchemulator@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/hammer-touchemulator/-/hammer-touchemulator-0.0.2.tgz#8bea4616729d53bf75f16c58f599c184e54a590e"
+  integrity sha1-i+pGFnKdU7918WxY9ZnBhOVKWQ4=
+
 har-schema@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/har-schema/-/har-schema-2.0.0.tgz#a94c2224ebcac04782a0d9035521f24735b7ec92"
