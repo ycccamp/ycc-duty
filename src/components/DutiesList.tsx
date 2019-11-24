@@ -29,10 +29,9 @@ function renderDutyElement(item: Item, ctx: DutyContext) {
   if (item.type === 'duty') {
     return (
       <CSSTransition
-        appear
         key={'d_' + item.id}
         timeout={800}
-        classNames="duty-card">
+        classNames="transition-card">
         <DutyCard onDone={ctx.handleDone} {...item} />
       </CSSTransition>
     )
@@ -41,7 +40,6 @@ function renderDutyElement(item: Item, ctx: DutyContext) {
   if (item.type === 'slot') {
     return (
       <CSSTransition
-        appear
         key={'s_' + item.slot}
         timeout={800}
         classNames="separator">
@@ -55,7 +53,6 @@ function renderDutyElement(item: Item, ctx: DutyContext) {
   if (item.type === 'agenda') {
     return (
       <CSSTransition
-        appear
         key={'a_' + item.slot}
         timeout={800}
         classNames="separator">
@@ -90,10 +87,8 @@ export function DutiesList() {
   const ctx = {handleDone}
 
   return (
-    <div>
-      <TransitionGroup className="duty-list">
-        {dutyList.map(item => renderDutyElement(item, ctx))}
-      </TransitionGroup>
-    </div>
+    <TransitionGroup className="duty-list">
+      {dutyList.map(item => renderDutyElement(item, ctx))}
+    </TransitionGroup>
   )
 }

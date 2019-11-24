@@ -33,11 +33,8 @@ export function Dashboard() {
     <Backdrop>
       <Row>
         <SlotCard />
-
         <AgendaCard />
-
         <DutiesList />
-
         <ActionContainer />
       </Row>
     </Backdrop>

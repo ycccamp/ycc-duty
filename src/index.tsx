@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom'
 
 import TouchEmulator from 'hammer-touchemulator'
 
-window.TouchEmulator = TouchEmulator
+TouchEmulator()
 
 import {Routes} from './components/Routes'
 
