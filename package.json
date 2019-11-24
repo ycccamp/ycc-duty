@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel src/index.pug",
-    "build": "parcel build --public-url '.' src/views/index.pug"
+    "build": "parcel build --public-url '.' src/index.pug"
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
