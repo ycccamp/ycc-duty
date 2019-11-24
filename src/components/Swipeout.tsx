@@ -32,7 +32,7 @@ function closest(el: HTMLElement, selector: string) {
   while (el) {
     if (matchesSelector.call(el, selector)) {
       return el
-    } else if (el.parentElement) {
+    } else {
       el = el.parentElement
     }
   }
