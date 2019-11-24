@@ -9,10 +9,11 @@ type AgendaHookResult = [Agenda | null, Agenda | null, Agenda[], number]
 export function useAgenda(startTime: string): AgendaHookResult {
   const agendas: Agenda[] = [
     {slot: 0, slotEnd: 18, name: 'นอนหลับพักผ่อน'},
-    {slot: 19, slotEnd: 22, name: 'Orientation'},
-    {slot: 23, slotEnd: 24, name: 'Ice Breaking'},
-    {slot: 25, slotEnd: 36, name: 'Design Thinking I'},
-    {slot: 37, slotEnd: 200, name: 'พักกินข้าวเที่ยง'},
+    {slot: 19, slotEnd: 22, name: 'รับน้องมาจากโรงแรม'},
+    {slot: 23, slotEnd: 24, name: 'Design Thinking III'},
+    {slot: 25, slotEnd: 36, name: 'สอนวิธีสัมภาษณ์'},
+    {slot: 37, slotEnd: 50, name: 'พักกินข้าวเที่ยง'},
+    {slot: 51, slotEnd: 200, name: 'พาน้องไปสัมภาษณ์'},
     {slot: 201, name: 'ร้องเพลงไฟเย็น'},
   ]
 
