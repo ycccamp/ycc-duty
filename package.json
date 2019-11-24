@@ -1,0 +1,57 @@
+{
+  "name": "rust-wasm-lab",
+  "description": "Rust WebAssembly Lab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:phoomparin/ywc17-homework.git",
+  "author": "Phoomparin Mano <phoomparin@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/index.pug",
+    "build": "parcel build --public-url '.' src/views/index.pug"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
+    "@reach/router": "^1.2.1",
+    "firebase": "^7",
+    "rc-swipeout": "^2.0.11",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.12",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
+    "eslint": "^6.7.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.0.9",
+    "jstransformer-markdown-it": "^2.1.0",
+    "lint-staged": ">=8",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-markdown-string": "^1.4.2",
+    "parcel-plugin-static-files-copy": "^2.2.1",
+    "parcel-plugin-wasm.rs": "^1.2.15",
+    "prettier": "^1.18.2",
+    "pug": "^2.0.4",
+    "sass": "^1.23.1",
+    "typescript": "^3.6.4",
+    "wasm-pack": "^0.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
