@@ -48,8 +48,8 @@ export function Dashboard() {
 
         <SlotSeparator />
 
-        <DutyCard name="เซ็ตโต๊ะลงทะเบียน" />
-        <DutyCard name="เช็คอินเตอร์เน็ต" color="#25B9CF" />
+        <DutyCard name="เซ็ตโต๊ะลงทะเบียน" upcoming />
+        <DutyCard name="เช็คอินเตอร์เน็ต" color="#25B9CF" upcoming />
 
         <ActionContainer />
       </Row>

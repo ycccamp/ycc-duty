@@ -32,7 +32,8 @@ const actionRight = [
 ]
 
 interface ContainerProps {
-  color?: string;
+  color?: string
+  upcoming?: boolean
 }
 
 const Container = styled.div<ContainerProps>`
@@ -45,6 +46,8 @@ const Container = styled.div<ContainerProps>`
   margin: 25px 0;
   border-left: 12px solid ${props => props.color || '#9b59b6'};
   border-radius: 6px;
+
+  opacity: ${props => props.upcoming ? 0.88 : 1};
 
   .rc-swipeout, .rc-swipeout-btn.duty-card-action {
     background: ${props => props.color || '#9b59b6'};
@@ -64,11 +67,12 @@ export const InnerCard = styled.div`
 interface DutyCardProps {
   name: string
   color?: string
+  upcoming?: boolean
 }
 
 export function DutyCard(props: DutyCardProps) {
   return (
-    <Container className='duty-card-container' color={props.color}>
+    <Container className='duty-card-container' color={props.color} upcoming={props.upcoming}>
       <Swipeout left={actionLeft} right={actionRight}>
         <InnerCard>
           {props.name}
