@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {useState, useEffect} from 'react'
 import styled from '@emotion/styled'
 
 const Container = styled.div`
@@ -17,14 +18,19 @@ const Container = styled.div`
   border-radius: 6px;
 `
 
-const Item = styled.div`
+interface ItemProp {
+  f?: number
+}
+
+const Item = styled.div<ItemProp>`
   padding: 8px 10px 13px 10px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   text-align: center;
 
-  color: #2c3e50;
-  flex: 1;
+  color: #35495d;
   width: 100%;
+
+  flex: ${props => props.f || 1};
 `
 
 const ProgressLine = styled.div`
@@ -39,12 +45,37 @@ const ProgressLine = styled.div`
   border-radius: 0px 0px 6px 6px;
 `
 
+const Small = styled.span`
+  color: #354A5E;
+  font-size: 0.8em;
+`
+
+const pad = n => n < 10 ? '0' + n : String(n)
+
+function useCurrentTime() {
+  const [time, setTime] = useState('--:--:--')
+
+  useEffect(() => {
+    let timer = setInterval(() => {
+      const d = new Date()
+
+      setTime(d.getHours() + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()))
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  return time
+}
+
 export function SlotCard() {
+  const currentTime = useCurrentTime()
+
   return (
     <Container>
-      <Item>8:36</Item>
-      <Item>คิว 5</Item>
-      <Item>-:--</Item>
+      <Item f={1.9}>{currentTime}</Item>
+      <Item><Small>คิว</Small> 50</Item>
+      <Item f={1.9}><Small>เหลือ</Small> 4:10</Item>
 
       <ProgressLine />
     </Container>
