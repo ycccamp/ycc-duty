@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import Gesture from 'rc-gesture'
 import classnames from 'classnames'
@@ -44,7 +44,7 @@ interface State {
   swiping: boolean
 }
 
-export default class Swipeout extends React.Component<SwipeoutProps, State> {
+export default class Swipeout extends Component<SwipeoutProps, State> {
   static defaultProps = {
     prefixCls: 'swipeout',
     autoClose: false,
@@ -112,30 +112,26 @@ export default class Swipeout extends React.Component<SwipeoutProps, State> {
     }
     if (this.needShowLeft || this.needShowRight) {
       this.swiping = true
-      this.setState({
-        swiping: this.swiping,
-      })
+      this.setState({swiping: this.swiping})
       this._setStyle(deltaX)
     }
   }
   onPanMove = e => {
     const {moveStatus, srcEvent} = e
     const {x: deltaX} = moveStatus
-    if (!this.swiping) {
-      return
-    }
+
+    if (!this.swiping) return
 
     // fixed scroll when it's pan and moving.
     if (srcEvent && srcEvent.preventDefault) {
       srcEvent.preventDefault()
     }
+
     this._setStyle(deltaX)
   }
 
   onPanEnd = e => {
-    if (!this.swiping) {
-      return
-    }
+    if (!this.swiping) return
 
     const {moveStatus} = e
     const {x: deltaX} = moveStatus
@@ -153,9 +149,7 @@ export default class Swipeout extends React.Component<SwipeoutProps, State> {
       this.close()
     }
     this.swiping = false
-    this.setState({
-      swiping: this.swiping,
-    })
+    this.setState({swiping: this.swiping})
     this.needShowLeft = false
     this.needShowRight = false
   }
@@ -244,9 +238,7 @@ export default class Swipeout extends React.Component<SwipeoutProps, State> {
   }
 
   onTouchMove = e => {
-    if (this.swiping) {
-      e.preventDefault()
-    }
+    if (this.swiping) e.preventDefault()
   }
 
   render() {
@@ -281,7 +273,6 @@ export default class Swipeout extends React.Component<SwipeoutProps, State> {
 
     return (
       <div className={cls} {...divProps}>
-        {/* 保证 body touchStart 后不触发 pan */}
         <div className={`${prefixCls}-cover`} ref={el => (this.cover = el)} />
         {this.renderButtons(left, 'left')}
         {this.renderButtons(right, 'right')}
