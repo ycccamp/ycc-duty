@@ -5,7 +5,7 @@ export const Card = styled.div`
   width: 100%;
   color: #2c3e50;
   text-align: center;
-  margin: 20px 0;
+  margin: 25px 0;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.18);
 
   cursor: pointer;
@@ -18,6 +18,7 @@ export const Title = styled.div`
   box-shadow: 0px 5px 5px rgba(0,0,0,0.08);
   position: relative;
   font-size: 2.4em;
+  font-weight: 400;
 `
 
 export const Subtitle = styled.div`
@@ -40,11 +41,11 @@ export function AgendaCard() {
   return (
     <Card>
       <Title>
-        ลงทะเบียน
+        เปิดรับลงทะเบียน
       </Title>
 
       <Subtitle>
-        ต่อไป: พิธีเปิด &nbsp; · &nbsp; ช่วงลงทะเบียน
+        ต่อไป พิธีเปิด &nbsp; · &nbsp; ช่วง chaos
       </Subtitle>
     </Card>
   )

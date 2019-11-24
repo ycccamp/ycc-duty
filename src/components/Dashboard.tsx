@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import {MiniCard} from './MiniCard'
 import {DutyCard} from './DutyCard'
 import {SlotCard} from './SlotCard'
 import {AgendaCard} from './AgendaCard'
@@ -42,7 +41,7 @@ export function Dashboard() {
 
         <AgendaCard />
 
-        <DutyCard name="เปิดไฟ" />
+        <DutyCard name="เปิดไฟ" color="#25B9CF" />
         <DutyCard name="เปิดประตูห้อง" />
         <DutyCard name="เช็คเครื่องเสียง" />
 
