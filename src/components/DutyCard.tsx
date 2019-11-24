@@ -2,35 +2,39 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import Swipeout from 'rc-swipeout'
 import Ink from 'react-ink'
-import Slide from 'react-reveal/Slide'
+import {CSSTransition} from 'react-transition-group'
 
-const actionLeft = [
-  {
-    text: (
-      <div className='duty-card-action-container action-left'>
-        <Ink />
+function buildAction(onLeftPress, onRightPress) {
+  const actionLeft = [
+    {
+      text: (
+        <div className="duty-card-action-container action-left">
+          <Ink />
 
-        <i className='far fa-clock' />
-      </div>
-    ),
-    onPress: () => console.log('เปลี่ยนเวลา'),
-    className: 'duty-card-action'
-  }
-]
+          <i className="far fa-clock" />
+        </div>
+      ),
+      onPress: onLeftPress,
+      className: 'duty-card-action',
+    },
+  ]
 
-const actionRight = [
-  {
-    text: (
-      <div className='duty-card-action-container'>
-        <Ink />
+  const actionRight = [
+    {
+      text: (
+        <div className="duty-card-action-container">
+          <Ink />
 
-        <i className='far fa-check-circle' />
-      </div>
-    ),
-    onPress: () => console.log('เสร็จ'),
-    className: 'duty-card-action'
-  },
-]
+          <i className="far fa-check-circle" />
+        </div>
+      ),
+      onPress: onRightPress,
+      className: 'duty-card-action',
+    },
+  ]
+
+  return [actionLeft, actionRight]
+}
 
 interface ContainerProps {
   color?: string
@@ -48,9 +52,10 @@ const Container = styled.div<ContainerProps>`
   border-left: 12px solid ${props => props.color || '#9b59b6'};
   border-radius: 6px;
 
-  opacity: ${props => props.upcoming ? 0.88 : 1};
+  opacity: ${props => (props.upcoming ? 0.88 : 1)};
 
-  .rc-swipeout, .rc-swipeout-btn.duty-card-action {
+  .rc-swipeout,
+  .rc-swipeout-btn.duty-card-action {
     background: ${props => props.color || '#9b59b6'};
   }
 `
@@ -66,21 +71,31 @@ export const InnerCard = styled.div`
 `
 
 interface DutyCardProps {
+  id: number
   name: string
   color?: string
   upcoming?: boolean
+
+  onDone?: (id: number, name: string) => void
 }
 
 export function DutyCard(props: DutyCardProps) {
+  function onLeftAction() {}
+
+  function onRightAction() {
+    if (props.onDone) props.onDone(props.id, props.name)
+  }
+
+  const [actionLeft, actionRight] = buildAction(onLeftAction, onRightAction)
+
   return (
-    <Slide left>
-      <Container className='duty-card-container' color={props.color} upcoming={props.upcoming}>
-        <Swipeout left={actionLeft} right={actionRight}>
-          <InnerCard>
-            {props.name}
-          </InnerCard>
-        </Swipeout>
-      </Container>
-    </Slide>
+    <Container
+      className="duty-card-container"
+      color={props.color}
+      upcoming={props.upcoming}>
+      <Swipeout left={actionLeft} right={actionRight}>
+        <InnerCard>{props.name}</InnerCard>
+      </Swipeout>
+    </Container>
   )
 }

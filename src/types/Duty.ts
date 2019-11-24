@@ -1,4 +1,5 @@
 export interface Duty {
+  id: number
   name: string
   color?: string
   slot?: number

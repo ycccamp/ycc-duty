@@ -1,6 +1,5 @@
 @use 'variables' as *
 @use 'fonts'
-@use 'main'
 
 @use 'swipeout'
 
@@ -59,3 +58,21 @@ table
 
 .table-container
   overflow-y: scroll
+
+.duty-list .duty-card-container
+  opacity: 0
+  transition: all 0.8s ease-in-out
+  transform: translate3d(-130%, 0, 0)
+  will-change: transform, opacity
+
+  &.duty-card-enter-active, &.duty-card-enter-done
+    opacity: 1
+    transform: translate3d(0, 0, 0)
+
+  &.duty-card-exit
+    transform: translate3d(0, 0, 0)
+
+  &.duty-card-exit-active
+    opacity: 0
+    transform: translate3d(100%, 0, 0)
+    visibility: hidden
