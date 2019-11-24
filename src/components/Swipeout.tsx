@@ -74,7 +74,9 @@ export default class Swipeout extends Component<SwipeoutProps, State> {
     this.btnsLeftWidth = this.left ? this.left.offsetWidth : 0
     this.btnsRightWidth = this.right ? this.right.offsetWidth : 0
 
-    document.body.addEventListener('touchstart', this.onCloseSwipe, true)
+    document.body.addEventListener('touchstart', this.onCloseSwipe, {
+      passive: true,
+    })
   }
 
   componentWillUnmount() {
