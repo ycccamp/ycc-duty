@@ -1,39 +1,99 @@
 import * as React from 'react'
+import {useMemo} from 'react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 import {DutyCard} from './DutyCard'
-import {SlotSeparator} from './SlotSeparator'
+import {Separator} from './Separator'
 
-import {notify, success} from '../utils/noti'
+import {Duty} from '../types/Duty'
+import {Agenda} from '../types/Agenda'
+
+import {notify} from '../utils/noti'
+import {padSpace} from '../utils/padSpace'
+import {getDutyList} from '../utils/getDutyList'
+
 import {useDutyData} from '../hooks/useDutyData'
+import {useAgendaData} from '../hooks/useAgenda'
+import {useCurrentSlot} from '../hooks/useCurrentSlot'
+
+export type Item =
+  | ({type: 'agenda'; currentSlot?: number; range: string} & Agenda)
+  | ({type: 'duty'} & Duty)
+  | {type: 'slot'; slot: number; range: string}
+
+interface DutyContext {
+  handleDone: (id: number, name: string) => void
+}
+
+function renderDutyElement(item: Item, ctx: DutyContext) {
+  if (item.type === 'duty') {
+    return (
+      <CSSTransition
+        appear
+        key={'d_' + item.id}
+        timeout={800}
+        classNames="duty-card">
+        <DutyCard onDone={ctx.handleDone} {...item} />
+      </CSSTransition>
+    )
+  }
+
+  if (item.type === 'slot') {
+    return (
+      <CSSTransition
+        appear
+        key={'s_' + item.slot}
+        timeout={800}
+        classNames="separator">
+        <Separator fontSize="1em" short>
+          คิว {String(item.slot)} &nbsp;<small>({item.range})</small>
+        </Separator>
+      </CSSTransition>
+    )
+  }
+
+  if (item.type === 'agenda') {
+    return (
+      <CSSTransition
+        appear
+        key={'a_' + item.slot}
+        timeout={800}
+        classNames="separator">
+        <Separator>
+          {item.name} &nbsp;
+          <small>({item.range})</small>
+        </Separator>
+      </CSSTransition>
+    )
+  }
+
+  return null
+}
 
 export function DutiesList() {
+  const currentSlot = useCurrentSlot('09:00')
   const [duties, setDuties] = useDutyData()
+  const [agendas] = useAgendaData()
 
-  function handleDone(id, name) {
+  const dutyList = useMemo(() => {
+    return getDutyList(duties, agendas, currentSlot)
+  }, [currentSlot, agendas, duties])
+
+  console.log(dutyList)
+
+  function handleDone(id: number, name: string) {
     setDuties(duties.filter(duty => duty.id !== id))
 
     notify(`งาน <b>${name}</b> เสร็จแล้ว! &nbsp;😎`)
   }
 
+  const ctx = {handleDone}
+
   return (
     <div>
       <TransitionGroup className="duty-list">
-        {duties.map(duty => (
-          <CSSTransition
-            appear
-            key={duty.id}
-            timeout={800}
-            classNames="duty-card">
-            <DutyCard onDone={handleDone} {...duty} />
-          </CSSTransition>
-        ))}
+        {dutyList.map(item => renderDutyElement(item, ctx))}
       </TransitionGroup>
-
-      <SlotSeparator />
-
-      <DutyCard id={3} name="เซ็ตโต๊ะลงทะเบียน" upcoming />
-      <DutyCard id={4} name="เช็คอินเตอร์เน็ต" color="#25B9CF" upcoming />
     </div>
   )
 }

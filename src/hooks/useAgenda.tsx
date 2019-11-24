@@ -13,7 +13,7 @@ type AgendaHookResult = [
   number,
 ]
 
-export function useAgenda(startTime: string): AgendaHookResult {
+export function useAgendaData() {
   const agendas: Agenda[] = [
     {slot: 0, slotEnd: 18, name: 'นอนหลับพักผ่อน'},
     {slot: 19, slotEnd: 22, name: 'รับน้องมาจากโรงแรม'},
@@ -31,6 +31,12 @@ export function useAgenda(startTime: string): AgendaHookResult {
     {slot: 37, slotEnd: 200, name: 'สัมภาษณ์'},
     {slot: 201, name: 'entertainment'},
   ]
+
+  return [agendas, periods]
+}
+
+export function useAgenda(startTime: string): AgendaHookResult {
+  const [agendas, periods] = useAgendaData()
 
   const [agendaIndex, setAgendaIndex] = useState<number | null>(null)
   const [currentPeriod, setPeriod] = useState<string | null>(null)

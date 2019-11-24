@@ -1,6 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+
 import {useAgenda} from '../hooks/useAgenda'
+import {padSpace} from '../utils/padSpace'
 
 export const Card = styled.div`
   width: 100%;
@@ -31,12 +33,6 @@ export const Subtitle = styled.div`
   background: #34495e;
   font-weight: 300;
 `
-
-function padSpace(s: string) {
-  if (s[0] && /[A-z]/.test(s[0])) return ' ' + s
-
-  return s
-}
 
 export function AgendaCard() {
   const [agenda, nextAgenda, period] = useAgenda('09:00')

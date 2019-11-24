@@ -4,8 +4,4 @@ export interface Agenda {
   name: string
 }
 
-export interface Period {
-  slot: number
-  slotEnd?: number
-  name: string
-}
+export type Period = Agenda
