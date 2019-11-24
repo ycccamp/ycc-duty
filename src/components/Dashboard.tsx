@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import {DutyCard} from './DutyCard'
 import {SlotCard} from './SlotCard'
 import {AgendaCard} from './AgendaCard'
+import {SlotSeparator} from './SlotSeparator'
 
 const ActionContainer = styled.div`
   width: 100%;
@@ -41,9 +42,14 @@ export function Dashboard() {
 
         <AgendaCard />
 
-        <DutyCard name="เปิดไฟ" color="#25B9CF" />
-        <DutyCard name="เปิดประตูห้อง" />
+        <DutyCard name="เปิดประตูห้อง" color="#25B9CF" />
+        <DutyCard name="เปิดไฟ" />
         <DutyCard name="เช็คเครื่องเสียง" />
+
+        <SlotSeparator />
+
+        <DutyCard name="เซ็ตโต๊ะลงทะเบียน" />
+        <DutyCard name="เช็คอินเตอร์เน็ต" color="#25B9CF" />
 
         <ActionContainer />
       </Row>
