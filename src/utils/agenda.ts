@@ -1,9 +1,10 @@
-import {Agenda} from '../types/Agenda'
+import {Agenda, Period} from '../types/Agenda'
 
-export function getAgendaIndex(slot: number, agendas: Agenda[]) {
-  const index = agendas.findIndex(
-    agenda =>
-      slot >= agenda.slot && (agenda.slotEnd ? slot <= agenda.slotEnd : true),
+type Item = Agenda | Period
+
+export function getItemIndex(slot: number, items: Item[]) {
+  const index = items.findIndex(
+    item => slot >= item.slot && (item.slotEnd ? slot <= item.slotEnd : true),
   )
 
   if (index < 0) return null
@@ -11,9 +12,13 @@ export function getAgendaIndex(slot: number, agendas: Agenda[]) {
   return index
 }
 
-export function getAgenda(slot: number, agendas: Agenda[]) {
-  const index = getAgendaIndex(slot, agendas)
+export function getItem(slot: number, items: Item[]) {
+  const index = getItemIndex(slot, items)
   if (index === null) return null
 
-  if (agendas[index]) return agendas[index]
+  if (items[index]) return items[index]
 }
+
+export const getPeriod = getItem
+export const getAgenda = getItem
+export const getAgendaIndex = getItemIndex

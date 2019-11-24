@@ -32,8 +32,14 @@ export const Subtitle = styled.div`
   font-weight: 300;
 `
 
+function padSpace(s: string) {
+  if (s[0] && /[A-z]/.test(s[0])) return ' ' + s
+
+  return s
+}
+
 export function AgendaCard() {
-  const [agenda, nextAgenda] = useAgenda('09:00')
+  const [agenda, nextAgenda, period] = useAgenda('09:00')
 
   let upcoming = 'ไม่มีกิจกรรมต่อจากนี้'
 
@@ -43,7 +49,9 @@ export function AgendaCard() {
     <Card>
       <Title>{agenda ? agenda.name : 'นอกเวลาจัดค่าย'}</Title>
 
-      <Subtitle>{upcoming} &nbsp; · &nbsp; ช่วง chaos</Subtitle>
+      <Subtitle>
+        {upcoming} &nbsp; · &nbsp; ช่วง{padSpace(period || 'หลังค่าย')}
+      </Subtitle>
     </Card>
   )
 }
