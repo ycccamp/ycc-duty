@@ -44,31 +44,16 @@
   position: relative
   overflow: hidden
 
-.rc-swipeout-btn-text 
-  padding: 0 12px
-
 .duty-card-container
   .rc-swipeout
     border-radius: 0px 6px 6px 0px
-
-  .rc-swipeout:after
-    display: flex
-    content: ' '
-    width: 30px
-    height: 100%
-    background: rgba(255, 255, 255, 0.93)
-    position: absolute
-    z-index: 3
-    left: 0
-    top: 0
-    backdrop-filter: blur(50px)
 
   .rc-swipeout-btn-text
     padding: 0
     height: 100%
     min-width: 55px
 
-  .rc-swipeout-btn.duty-card-action-done
+  .rc-swipeout-btn.duty-card-action
     color: white
     font-size: 0.85em
 
@@ -78,10 +63,14 @@
     .rc-swipeout-actions-right &
       border-radius: 0px 6px 6px 0px
 
-  .duty-card-action-done-container
+  .duty-card-action-container
     display: flex
     align-items: center
     justify-content: center
     height: 100%
 
     position: relative
+
+    &.action-left
+      justify-content: flex-start
+      padding-left: 12px

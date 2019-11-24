@@ -3,18 +3,32 @@ import styled from '@emotion/styled'
 import Swipeout from 'rc-swipeout'
 import Ink from 'react-ink'
 
+const actionLeft = [
+  {
+    text: (
+      <div className='duty-card-action-container action-left'>
+        <Ink />
+
+        <i className='far fa-clock' />
+      </div>
+    ),
+    onPress: () => console.log('เปลี่ยนเวลา'),
+    className: 'duty-card-action'
+  }
+]
+
 const actionRight = [
   {
     text: (
-      <div className='duty-card-action-done-container'>
+      <div className='duty-card-action-container'>
         <Ink />
 
         <i className='far fa-check-circle' />
       </div>
     ),
     onPress: () => console.log('เสร็จ'),
-    className: 'duty-card-action-done'
-  }
+    className: 'duty-card-action'
+  },
 ]
 
 interface ContainerProps {
@@ -32,7 +46,7 @@ const Container = styled.div<ContainerProps>`
   border-left: 12px solid ${props => props.color || '#9b59b6'};
   border-radius: 6px;
 
-  .rc-swipeout, .rc-swipeout-btn.duty-card-action-done {
+  .rc-swipeout, .rc-swipeout-btn.duty-card-action {
     background: ${props => props.color || '#9b59b6'};
   }
 `
@@ -42,6 +56,7 @@ export const InnerCard = styled.div`
   background: white;
   padding: 10px 0px 10px 28px;
   border-radius: 0px 6px 6px 0px;
+  position: relative;
 
   cursor: pointer;
 `
@@ -54,7 +69,7 @@ interface DutyCardProps {
 export function DutyCard(props: DutyCardProps) {
   return (
     <Container className='duty-card-container' color={props.color}>
-      <Swipeout right={actionRight}>
+      <Swipeout left={actionLeft} right={actionRight}>
         <InnerCard>
           {props.name}
         </InnerCard>
