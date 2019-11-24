@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 
 import {useCurrentTime} from '../hooks/useCurrentTime'
 import {useCurrentSlot} from '../hooks/useCurrentSlot'
+import {useRemainingTimeInSlot} from '../hooks/useRemainingTimeInSlot'
 
 const Container = styled.div`
   display: flex;
@@ -55,6 +56,7 @@ const Small = styled.span`
 export function SlotCard() {
   const currentTime = useCurrentTime()
   const currentSlot = useCurrentSlot('09:00')
+  const remainingTime = useRemainingTimeInSlot()
 
   return (
     <Container>
@@ -63,7 +65,7 @@ export function SlotCard() {
         <Small>คิว</Small> {currentSlot}
       </Item>
       <Item flex={1.6}>
-        <Small>เหลือ</Small> 4:10
+        <Small>เหลือ</Small> {remainingTime}
       </Item>
 
       <ProgressLine />
