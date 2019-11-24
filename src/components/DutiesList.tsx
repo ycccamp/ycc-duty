@@ -4,26 +4,20 @@ import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {DutyCard} from './DutyCard'
 import {SlotSeparator} from './SlotSeparator'
 
+import {notify, success} from '../utils/noti'
 import {useDutyData} from '../hooks/useDutyData'
 
 export function DutiesList() {
   const [duties, setDuties] = useDutyData()
 
-  function handleDone(id) {
+  function handleDone(id, name) {
     setDuties(duties.filter(duty => duty.id !== id))
-  }
 
-  window.duties = duties
-  window.setDuties = setDuties
-
-  function mockAdd() {
-    setDuties([...duties, {id: duties.length + 1, name: 'Hello'}])
+    notify(`งาน <b>${name}</b> เสร็จแล้ว! &nbsp;😎`)
   }
 
   return (
     <div>
-      <button onClick={mockAdd}>add</button>
-
       <TransitionGroup className="duty-list">
         {duties.map(duty => (
           <CSSTransition
