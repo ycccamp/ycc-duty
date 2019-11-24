@@ -44,7 +44,7 @@ export function SlotCard() {
     <Container>
       <Item>8:36</Item>
       <Item>คิว 5</Item>
-      <Item style={{flex: 1.5}}>เหลือ 4:10</Item>
+      <Item>-:--</Item>
 
       <ProgressLine />
     </Container>

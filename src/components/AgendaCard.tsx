@@ -17,7 +17,7 @@ export const Title = styled.div`
   border-radius: 6px 6px 0 0;
   box-shadow: 0px 5px 5px rgba(0,0,0,0.08);
   position: relative;
-  font-size: 2.4em;
+  font-size: 2.2em;
   font-weight: 400;
 `
 
