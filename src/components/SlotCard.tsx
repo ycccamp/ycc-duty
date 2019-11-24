@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
+import {useAgenda} from '../hooks/useAgenda'
 import {useCurrentTime} from '../hooks/useCurrentTime'
 import {useCurrentSlot} from '../hooks/useCurrentSlot'
 import {useRemainingTimeInSlot} from '../hooks/useRemainingTimeInSlot'
