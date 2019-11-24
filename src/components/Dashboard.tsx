@@ -6,6 +6,8 @@ import {SlotCard} from './SlotCard'
 import {AgendaCard} from './AgendaCard'
 import {SlotSeparator} from './SlotSeparator'
 
+import {useDutyData} from '../hooks/useDutyData'
+
 const ActionContainer = styled.div`
   width: 100%;
   min-height: 200px;
@@ -35,6 +37,8 @@ const Small = styled.span`
 `
 
 export function Dashboard() {
+  const duties = useDutyData()
+
   return (
     <Backdrop>
       <Row>
@@ -42,9 +46,7 @@ export function Dashboard() {
 
         <AgendaCard />
 
-        <DutyCard name="เปิดประตูห้อง" color="#25B9CF" />
-        <DutyCard name="เปิดไฟ" />
-        <DutyCard name="เช็คเครื่องเสียง" />
+        {duties.map(duty => <DutyCard key={duty.name} {...duty} />)}
 
         <SlotSeparator />
 

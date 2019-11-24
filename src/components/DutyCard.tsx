@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import Swipeout from 'rc-swipeout'
 import Ink from 'react-ink'
+import Slide from 'react-reveal/Slide'
 
 const actionLeft = [
   {
@@ -72,12 +73,14 @@ interface DutyCardProps {
 
 export function DutyCard(props: DutyCardProps) {
   return (
-    <Container className='duty-card-container' color={props.color} upcoming={props.upcoming}>
-      <Swipeout left={actionLeft} right={actionRight}>
-        <InnerCard>
-          {props.name}
-        </InnerCard>
-      </Swipeout>
-    </Container>
+    <Slide left>
+      <Container className='duty-card-container' color={props.color} upcoming={props.upcoming}>
+        <Swipeout left={actionLeft} right={actionRight}>
+          <InnerCard>
+            {props.name}
+          </InnerCard>
+        </Swipeout>
+      </Container>
+    </Slide>
   )
 }
