@@ -8,18 +8,6 @@ import {notify} from '../utils/noti'
 function buildAction(onLeftSwipe: Function, onRightSwipe: Function) {
   const actionLeft = {
     text: (
-      <div className="duty-card-action-container action-left">
-        <Ink />
-
-        <i className="far fa-clock" />
-      </div>
-    ),
-    onSwipe: onLeftSwipe,
-    className: 'duty-card-action',
-  }
-
-  const actionRight = {
-    text: (
       <div className="duty-card-action-container">
         <Ink />
 
@@ -27,6 +15,18 @@ function buildAction(onLeftSwipe: Function, onRightSwipe: Function) {
       </div>
     ),
     onSwipe: onRightSwipe,
+    className: 'duty-card-action',
+  }
+
+  const actionRight = {
+    text: (
+      <div className="duty-card-action-container action-left">
+        <Ink />
+
+        <i className="far fa-clock" />
+      </div>
+    ),
+    onSwipe: onLeftSwipe,
     className: 'duty-card-action',
   }
 
