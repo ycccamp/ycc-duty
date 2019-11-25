@@ -3,13 +3,10 @@
   position: relative
   touch-action: none
 
-  .swipeout-content,
-  .swipeout-actions
-    transition: all 250ms
-
 .swipeout-content
   position: relative
   width: 100%
+  will-change: left, transform
 
 .swipeout-cover
   position: absolute
@@ -19,10 +16,7 @@
   width: 100%
   top: 0
   display: none
-
-.swipeout-swiping .swipeout-content
-  transition: none
-  touch-action: none
+  will-change: left, transform
 
 .swipeout-actions 
   position: absolute

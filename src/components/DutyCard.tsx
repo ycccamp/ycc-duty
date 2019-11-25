@@ -7,7 +7,7 @@ import {notify} from '../utils/noti'
 
 function buildAction(onLeftSwipe: Function, onRightSwipe: Function) {
   const actionLeft = {
-    text: (
+    children: (
       <div className="duty-card-action-container">
         <Ink />
 
@@ -19,7 +19,7 @@ function buildAction(onLeftSwipe: Function, onRightSwipe: Function) {
   }
 
   const actionRight = {
-    text: (
+    children: (
       <div className="duty-card-action-container action-left">
         <Ink />
 
