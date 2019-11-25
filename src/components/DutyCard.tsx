@@ -3,35 +3,32 @@ import styled from '@emotion/styled'
 import Ink from 'react-ink'
 
 import Swipeout from './Swipeout'
+import {notify} from '../utils/noti'
 
-function buildAction(onLeftPress: Function, onRightPress: Function) {
-  const actionLeft = [
-    {
-      text: (
-        <div className="duty-card-action-container action-left">
-          <Ink />
+function buildAction(onLeftSwipe: Function, onRightSwipe: Function) {
+  const actionLeft = {
+    text: (
+      <div className="duty-card-action-container action-left">
+        <Ink />
 
-          <i className="far fa-clock" />
-        </div>
-      ),
-      onPress: onLeftPress,
-      className: 'duty-card-action',
-    },
-  ]
+        <i className="far fa-clock" />
+      </div>
+    ),
+    onSwipe: onLeftSwipe,
+    className: 'duty-card-action',
+  }
 
-  const actionRight = [
-    {
-      text: (
-        <div className="duty-card-action-container">
-          <Ink />
+  const actionRight = {
+    text: (
+      <div className="duty-card-action-container">
+        <Ink />
 
-          <i className="far fa-check-circle" />
-        </div>
-      ),
-      onPress: onRightPress,
-      className: 'duty-card-action',
-    },
-  ]
+        <i className="far fa-check-circle" />
+      </div>
+    ),
+    onSwipe: onRightSwipe,
+    className: 'duty-card-action',
+  }
 
   return [actionLeft, actionRight]
 }
@@ -80,7 +77,9 @@ interface DutyCardProps {
 }
 
 export function DutyCard(props: DutyCardProps) {
-  function onLeftAction() {}
+  function onLeftAction() {
+    notify(`เลื่อนเวลา ${props.name}`)
+  }
 
   function onRightAction() {
     if (props.onDone) props.onDone(props.id, props.name)
